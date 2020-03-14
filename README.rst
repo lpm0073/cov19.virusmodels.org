@@ -141,6 +141,21 @@ Add the following row to this file and then save:
     $ Applying socialaccount.0001_initial... OK
     $ Applying socialaccount.0002_token_max_lengths... OK
     $ Applying socialaccount.0003_extra_data_default_dict... OK
+    $ Applying django_celery_beat.0001_initial... OK
+    $ Applying django_celery_beat.0002_auto_20161118_0346... OK
+    $ Applying django_celery_beat.0003_auto_20161209_0049... OK
+    $ Applying django_celery_beat.0004_auto_20170221_0000... OK
+    $ Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+    $ Applying django_celery_beat.0006_auto_20180322_0932... OK
+    $ Applying django_celery_beat.0007_auto_20180521_0826... OK
+    $ Applying django_celery_beat.0008_auto_20180914_1922... OK
+    $ Applying django_celery_beat.0006_auto_20180210_1226... OK
+    $ Applying django_celery_beat.0006_periodictask_priority... OK
+    $ Applying django_celery_beat.0009_periodictask_headers... OK
+    $ Applying django_celery_beat.0010_auto_20190429_0326... OK
+    $ Applying django_celery_beat.0011_auto_20190508_0153... OK
+    $ Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+
 
 7. Create a Django superuser 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

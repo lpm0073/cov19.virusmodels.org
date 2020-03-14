@@ -81,8 +81,10 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "rest_framework"
-    #"django_celery_beat",
+    "rest_framework",
+    "django_celery_beat",
+    # lawrence: as per Django Rest Framework setup doc https://www.django-rest-framework.org/
+    "django_filters",
 ]
 
 LOCAL_APPS = [
