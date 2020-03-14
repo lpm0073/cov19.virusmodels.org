@@ -33,10 +33,11 @@ Dependencies
    (optional)
 
 Setup
-~~~~~
+^^^^^
 
 1. Create a virtual environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Then activate it and install all pip
 requirements. Also, run migrations, load initial data (if any), and
 start the dev web server to ensure that the site comes up:
@@ -49,7 +50,7 @@ start the dev web server to ensure that the site comes up:
     $ source venv/bin/activate
 
 2. Install Python requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -60,7 +61,7 @@ start the dev web server to ensure that the site comes up:
 
 
 3. Create a new PostgreSQL database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If this is your first time to use PostgreSQL on your local computer then you'll need to 
 download and install it: https://www.postgresql.org/
 
@@ -69,6 +70,7 @@ download and install it: https://www.postgresql.org/
     $ createdb cov19 -U postgres --password cov19
 
 4. Set environment variables for postgreSQL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 edit cov19/config/settings/base.py, replacing this code 
 
 .. code:: python
@@ -94,6 +96,7 @@ with the following:
 
 
 5. Create a new file: cov19/.env
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add the following row to this file and then save:
 
 .. code:: python
@@ -102,6 +105,7 @@ Add the following row to this file and then save:
 
 
 6. Bootstrap Django locally 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -139,6 +143,7 @@ Add the following row to this file and then save:
     $ Applying socialaccount.0003_extra_data_default_dict... OK
 
 7. Create a Django superuser 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -146,6 +151,7 @@ Add the following row to this file and then save:
 
 
 8. Launch the site from your local web server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
