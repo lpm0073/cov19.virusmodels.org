@@ -9,3 +9,7 @@ psycopg2==2.8.4 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
 # ------------------------------------------------------------------------------
 django-storages[boto3]==1.9.1  # https://github.com/jschneier/django-storages
 django-anymail[mailgun]==7.0.0  # https://github.com/anymail/django-anymail
+
+# Lawrence: project specific
+# ------------------------------------------------------------------------------
+wheel                   # https://pip.pypa.io/en/stable/reference/pip_wheel/

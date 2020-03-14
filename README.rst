@@ -300,13 +300,21 @@ Python Django Installation
 
 ::
 
+    # first time installation
     cd ~
     sudo rm -r ./cov19.virusmodels.org
     git clone https://github.com/lpm0073/cov19.virusmodels.org.git
 
-    python3.7 -m venv ~/cov19.virusmodels.org/venv
+    python3 -m venv ~/cov19.virusmodels.org/venv
     source ~/cov19.virusmodels.org/venv/bin/activate
     pip install -r ~/cov19.virusmodels.org/cov19/requirements/production.txt
+
+
+    # for CI 
+    cd ~/cov19.virusmodels.org
+    git checkout . 
+    git pull
+
 
 Ensure that settings.production.py credentials match whatever you used
 in the MySql installation above:
@@ -346,10 +354,10 @@ Point .env file to production
 ::
 
     vim /home/ubuntu/cov19.virusmodels.org/.env
-    DJANGO_SETTINGS_MODULE = 'cov19.settings.production'
+    DJANGO_SETTINGS_MODULE = cov19.settings.production
     DJANGO_SECRET_KEY = 'A STRONG KEY THAT IS USED BY DJANGO.'
 
-Point cov19/wsgi.py to production
+Point cov19/wsgi.py to production (OBSOLETE?????)
 
 ::
 
@@ -362,7 +370,7 @@ for
 ::
 
 
-    MYSQL_COV19_PWD = 'YOUR TOP-SECRET PASSWORD'
+    DATABASES_PASSWORD = 'YOUR TOP-SECRET PASSWORD'
 
 Initiate the Django build sequence to initialize the database, load
 Wagtail sample data, compile static assets and finally, test the build
