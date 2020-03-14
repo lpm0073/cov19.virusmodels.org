@@ -14,23 +14,14 @@ Viruses and other pandemics.
 -  `GitHub Repository <https://github.com/lpm0073/cov19.virusmodels.org>`__
 
 
-Developers
-----------
+Development Environment Setup
+-----------------------------
 The dev environment depends on postgres in your local dev environment, so make sure that you have this.
 It MIGHT be handled with the projects requirements/local.txt (i have not checked) -- please advise if you know.
 
 * (lawrence) I am setting up .env for the project so that we can get CI working this morning. be aware you might 
 need to "git checkout" often today as i get this working.
 
-.. code:: bash
-
-Developer Installation
-----------------------
-
-You can run the Wagtail demo locally without setting up Vagrant or
-Docker and simply use Virtualenv, which is the `recommended installation
-approach <https://docs.djangoproject.com/en/1.10/topics/install/#install-the-django-code>`__
-for Django itself.
 
 Dependencies
 ^^^^^^^^^^^^
@@ -61,9 +52,9 @@ start the dev web server to ensure that the site comes up:
     $ cov19/manage.py runserver
 
 
-Production Installation
------------------------
-Deployment to Ubuntu 16.04 LTS
+Production Environment Setup
+----------------------------
+Deployment to Ubuntu 18.04 LTS
 
 -  Ubuntu configuration
 -  SSH configuration
