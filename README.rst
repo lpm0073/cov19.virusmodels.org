@@ -416,7 +416,7 @@ Check to ensure that the gunicorn socket exists:
 
 ::
 
-    $ file /run/gunicorn.sock
+    $ file /run/gunicorn.socket
 
 Trouble shooting aids:
 

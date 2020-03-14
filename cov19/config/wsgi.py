@@ -28,20 +28,20 @@ DEBUG = True
 root_path = os.path.abspath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir)
 )
-config_path = os.path.join(root_path, "config")
 env_path = os.path.join(root_path, '.env')
-app_path = os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir)
-)
-sys.path.append(os.path.join(app_path, "cov19"))
+#config_path = os.path.join(root_path, "config")
+#app_path = os.path.join(root_path, 'cov19')
+
 sys.path.append(root_path)
-sys.path.append(config_path)
+#sys.path.append(os.path.join(app_path, "cov19"))
+#sys.path.append(app_path)
+#sys.path.append(config_path)
 
 if DEBUG:
     print('wsgi.py root_path: {path}'.format(path=root_path))
-    print('wsgi.py app_path: {path}'.format(path=app_path))
-    print('wsgi.py config_path: {path}'.format(path=config_path))
-    print('wsgi.py env_path: {path}'.format(path=env_path))
+#    print('wsgi.py app_path: {path}'.format(path=app_path))
+#    print('wsgi.py config_path: {path}'.format(path=config_path))
+#    print('wsgi.py env_path: {path}'.format(path=env_path))
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
 # if running multiple sites in the same mod_wsgi process. To fix this, use

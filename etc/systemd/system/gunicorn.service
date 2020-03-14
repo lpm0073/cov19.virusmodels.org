@@ -1,5 +1,6 @@
 [Unit]
 Description=gunicorn service
+Requires=gunicorn.socket
 After=network.target
 
 [Service]
@@ -9,8 +10,7 @@ WorkingDirectory=/home/ubuntu/cov19.virusmodels.org/cov19/
 ExecStart=/home/ubuntu/cov19.virusmodels/venv/bin/gunicorn \
          --access-logfile - \
          --workers 3 \
-         --bind unix:/home/ubuntu/cov19.virusmodels.org/etc/systemd/system/gunicorn.sock \
-         config.wsgi:application
+         --bind unix:/run/gunicorn.sock config.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
