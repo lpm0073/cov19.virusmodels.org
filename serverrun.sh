@@ -2,5 +2,5 @@
 
 brew services start redis
 source venv/bin/activate
-python ./roverbyopenstax/manage.py runserver
+python ./cov19/manage.py runserver
 

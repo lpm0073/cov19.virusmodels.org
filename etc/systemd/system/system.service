@@ -5,12 +5,12 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/cov19.virusmodels.org/djangoproject/
+WorkingDirectory=/home/ubuntu/cov19.virusmodels.org/cov19/
 ExecStart=/home/ubuntu/cov19.virusmodels/venv/bin/gunicorn \
          --access-logfile - \
          --workers 3 \
          --bind unix:/home/ubuntu/cov19.virusmodels.org/etc/systemd/system/gunicorn.sock \
-         cov19.config.wsgi:application
+         config.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
