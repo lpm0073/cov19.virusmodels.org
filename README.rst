@@ -57,19 +57,37 @@ start the dev web server to ensure that the site comes up:
 
 
 3. Create a new PostgreSQL database
+If this is your first time to use PostgreSQL on your local computer then you'll need to 
+download and install it: https://www.postgresql.org/
 
 .. code:: bash
 
     $ createdb cov19 -U postgres --password cov19
 
-4. Set environment variable
+4. Set environment variables for postgreSQL
+edit cov19/config/settings/base.py, replacing this code 
 
-.. code:: bash
+.. code::python
 
-    $ export DATABASE_URL=postgres://postgres:cov19@127.0.0.1:5432/cov19
-    $ export CELERY_BROKER_URL=redis://localhost:6379/0
+    DATABASES = {
+        "default": env.db("DATABASE_URL", default="postgres:///cov19")
+    }
 
-5. Bootstrap Django locally 
+with the following:
+
+.. literalinclude:: cov19/config/settings/base.py
+    :language: Python
+    :lines: 43-57
+
+5. Create a new file: cov19/.env
+Add the following row to this file and then save:
+
+.. code:: python
+
+    CELERY_BROKER_URL = "amqp://"
+
+
+6. Bootstrap Django locally 
 
 .. code:: bash
 
@@ -108,14 +126,14 @@ start the dev web server to ensure that the site comes up:
 
 
 
-6. Create a Django superuser 
+7. Create a Django superuser 
 
 .. code:: bash
 
     $ cov19/manage.py createsuperuser
 
 
-7. Launch the site from your local web server
+8. Launch the site from your local web server
 
 .. code:: bash
 
