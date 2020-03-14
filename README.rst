@@ -22,6 +22,7 @@ It MIGHT be handled with the projects requirements/local.txt (i have not checked
 * (lawrence) I am setting up .env for the project so that we can get CI working this morning. be aware you might 
 need to "git checkout" often today as i get this working.
 
+For additional help refer to: https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html
 
 Dependencies
 ^^^^^^^^^^^^
@@ -34,7 +35,7 @@ Dependencies
 Python Django Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create a virtual environment, then activate it and install all pip
+1. Create a virtual environment, then activate it and install all pip
 requirements. Also, run migrations, load initial data (if any), and
 start the dev web server to ensure that the site comes up:
 
@@ -44,8 +45,34 @@ start the dev web server to ensure that the site comes up:
     $ cd cov19.virusmodels.org
     $ python3.7 -m venv venv
     $ source venv/bin/activate
+
+2. Install Python requirements
+
+.. code:: bash
+
+
     $ pip install --upgrade pip
     $ pip install -r cov19/requirements/local.txt
+
+
+
+3. Create a new PostgreSQL database
+
+.. code:: bash
+
+    $ $ createdb cov19 -U postgres --password cov19
+
+4. Set environment variable
+
+.. code:: bash
+
+    $ export DATABASE_URL=postgres://postgres:cov19@127.0.0.1:5432/cov19
+    $ export CELERY_BROKER_URL=redis://localhost:6379/0
+
+5. Bootstrap Django locally 
+
+.. code:: bash
+
     $ cov19/manage.py createsuperuser
     $ cov19/manage.py migrate
     $ cov19/manage.py load_initial_data
