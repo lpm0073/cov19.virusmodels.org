@@ -2,7 +2,18 @@
 import os
 import sys
 
+# lawrence: use .env to control environment
+import dotenv
+
 if __name__ == "__main__":
+    # mcdaniel:
+    # this allows us to seamlessly toggle between local (ie "dev") and production settings.
+    # .env contains the DJANGO_SETTINGS_MODULE value:
+    #           "config.settings.local" for dev,
+    #           "config.settings.production" for AWS Ubuntu
+    # reference: https://github.com/jpadilla/django-dotenv
+    # this needs to be placed immediately above os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
+    dotenv.read_dotenv(override=True)
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
 
     try:

@@ -349,20 +349,14 @@ consistent with file locations on the server:
 Python Django Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Point .env file to production
+Add a ~/cov19.virusmodels.org/.env file
 
 ::
 
-    vim /home/ubuntu/cov19.virusmodels.org/.env
-    DJANGO_SETTINGS_MODULE = cov19.settings.production
+    vim ~/cov19.virusmodels.org/.env
+    DJANGO_SETTINGS_MODULE = cov19.config.settings.production
     DJANGO_SECRET_KEY = 'A STRONG KEY THAT IS USED BY DJANGO.'
 
-Point cov19/wsgi.py to production (OBSOLETE?????)
-
-::
-
-    vim /home/ubuntu/cov19.virusmodels.org/cov19/wsgi.py
-    DELETE THIS ---> os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cov19.settings.production")
 
 Add a cov19.virusmodels.org/cov19/settings/secrets.py file with values
 for
@@ -381,12 +375,10 @@ from the web server launch then the built might have been successful.
 
     $ cd ~/cov19.virusmodels.org
     $ source ~/cov19.virusmodels.org/venv/bin/activate
-    (env) $ python manage.py makemigrations
-    (env) $ python manage.py migrate
-    (env) $ python manage.py load_initial_data
-    (env) $ python manage.py collectstatic
-    (env) $ python manage.py runserver
-    (env) $ deactivate
+    (env) $ python cov19/manage.py makemigrations
+    (env) $ python cov19/manage.py migrate
+    (env) $ python cov19/manage.py collectstatic
+    (env) $ python cov19/manage.py runserver
 
 Gunicorn Configuration
 ^^^^^^^^^^^^^^^^^^^^^^
