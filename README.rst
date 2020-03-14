@@ -81,8 +81,8 @@ with the following:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'cov19',
-            'USER': 'provisioner',
-            'PASSWORD': 'provisioner',
+            'USER': 'YOUR-POSTGRESQL-USERNAME-GOES-HERE',
+            'PASSWORD': 'YOUR-POSTGRESQL-PASSWORD-GOES-HERE',
             'HOST': '127.0.0.1',
             'PORT': '5432',
         }
