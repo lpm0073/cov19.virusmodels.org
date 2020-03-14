@@ -75,7 +75,7 @@ edit cov19/config/settings/base.py, replacing this code
 
 with the following:
 
-.. literalinclude:: cov19/config/settings/base.py
+.. literalinclude:: ./cov19/settings/base
     :language: Python
     :lines: 43-57
 
