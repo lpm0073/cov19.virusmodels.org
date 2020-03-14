@@ -32,10 +32,12 @@ Dependencies
 -  `VirtualenvWrapper <https://virtualenvwrapper.readthedocs.io/en/latest/install.html>`__
    (optional)
 
-Python Django Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setup
+~~~~~
 
-1. Create a virtual environment, then activate it and install all pip
+1. Create a virtual environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Then activate it and install all pip
 requirements. Also, run migrations, load initial data (if any), and
 start the dev web server to ensure that the site comes up:
 
@@ -47,6 +49,7 @@ start the dev web server to ensure that the site comes up:
     $ source venv/bin/activate
 
 2. Install Python requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
 
@@ -57,6 +60,7 @@ start the dev web server to ensure that the site comes up:
 
 
 3. Create a new PostgreSQL database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If this is your first time to use PostgreSQL on your local computer then you'll need to 
 download and install it: https://www.postgresql.org/
 
@@ -133,8 +137,6 @@ Add the following row to this file and then save:
     $ Applying socialaccount.0001_initial... OK
     $ Applying socialaccount.0002_token_max_lengths... OK
     $ Applying socialaccount.0003_extra_data_default_dict... OK
-
-
 
 7. Create a Django superuser 
 
@@ -419,4 +421,3 @@ Scope
 -  create custom User object with custom openstax tracking fields
 -  create REST api for custom user object
 -  add Bootstrap 4.x
-
