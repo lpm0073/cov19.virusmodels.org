@@ -67,7 +67,7 @@ download and install it: https://www.postgresql.org/
 4. Set environment variables for postgreSQL
 edit cov19/config/settings/base.py, replacing this code 
 
-.. code::python
+.. code:: python
 
     DATABASES = {
         "default": env.db("DATABASE_URL", default="postgres:///cov19")
