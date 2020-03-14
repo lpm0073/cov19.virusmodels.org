@@ -13,3 +13,7 @@ django-anymail[mailgun]==7.0.0  # https://github.com/anymail/django-anymail
 # Lawrence: project specific
 # ------------------------------------------------------------------------------
 wheel                   # https://pip.pypa.io/en/stable/reference/pip_wheel/
+
+# Production stack: Nginx, Gunicorn, MySql
+# ------------------------------------------------------------------------------
+mysqlclient>=1.3.13
