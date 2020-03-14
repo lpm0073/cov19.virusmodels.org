@@ -75,9 +75,19 @@ edit cov19/config/settings/base.py, replacing this code
 
 with the following:
 
-.. literalinclude:: ./cov19/settings/base
-    :language: Python
-    :lines: 43-57
+.. code:: python
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'cov19',
+            'USER': 'provisioner',
+            'PASSWORD': 'provisioner',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
+
 
 5. Create a new file: cov19/.env
 Add the following row to this file and then save:
