@@ -35,3 +35,4 @@ pytest-django==3.8.0  # https://github.com/pytest-dev/pytest-django
 # ------------------------------------------------------------------------------
 rstcheck
 sphinx-autobuild
+docutils<0.16,>=0.10    # https://pypi.org/project/docutils/ -- this is a boto3 requirement
