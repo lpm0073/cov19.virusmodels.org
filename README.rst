@@ -128,22 +128,8 @@ Add the following row to this file and then save:
     $ Applying auth.0007_alter_validators_add_error_messages... OK
     $ Applying auth.0008_alter_user_username_max_length... OK
     $ Applying users.0001_initial... OK
-    $ Applying account.0001_initial... OK
-    $ Applying account.0002_email_max_length... OK
-    $ Applying admin.0001_initial... OK
-    $ Applying admin.0002_logentry_remove_auto_add... OK
-    $ Applying admin.0003_logentry_add_action_flag_choices... OK
-    $ Applying auth.0009_alter_user_last_name_max_length... OK
-    $ Applying auth.0010_alter_group_name_max_length... OK
-    $ Applying auth.0011_update_proxy_permissions... OK
-    $ Applying sessions.0001_initial... OK
-    $ Applying sites.0001_initial... OK
-    $ Applying sites.0002_alter_domain_unique... OK
-    $ Applying sites.0003_set_site_domain_and_name... OK
-    $ Applying socialaccount.0001_initial... OK
-    $ Applying socialaccount.0002_token_max_lengths... OK
-    $ Applying socialaccount.0003_extra_data_default_dict... OK
-    $ Applying django_celery_beat.0001_initial... OK
+    $ ...
+    $ ...
     $ Applying django_celery_beat.0002_auto_20161118_0346... OK
     $ Applying django_celery_beat.0003_auto_20161209_0049... OK
     $ Applying django_celery_beat.0004_auto_20170221_0000... OK
@@ -283,13 +269,14 @@ MySql Installation
 
 ::
 
-    # harden security on mysql
-    mysql_secure_installation
+    # contact Lawrence McDaniel lpm0073@gmail.com if you 
+    # need MySQL root access.
 
-    $ mysql -u root -p
+    $ mysql -u root -h wordpress-sql.cp6gb73qx6d7.us-west-2.rds.amazonaws.com -p
     mysql> CREATE DATABASE cov19 CHARACTER SET 'utf8';
     mysql> CREATE USER cov19;
-    mysql> GRANT ALL ON cov19.* TO 'cov19'@'localhost' IDENTIFIED BY 'cov19';
+    mysql> GRANT ALL ON cov19.* TO 'cov19'@'%' IDENTIFIED BY 'cov19';
+    mysql> FLUSH PRIVILEGES;
     mysql> quit
 
 **Note: if you are rebuilding the production environment from scratch
@@ -306,14 +293,7 @@ the database from scratch:**
     sudo rm -r /home/ubuntu/cov19.virusmodels.org/cov19/locations/migrations
     sudo rm -r /home/ubuntu/cov19.virusmodels.org/cov19/users/migrations
 
-    ./manage.py makemigrations auth
-    ./manage.py makemigrations admin
-    ./manage.py makemigrations base
-    ./manage.py makemigrations blog
-    ./manage.py makemigrations breads
-    ./manage.py makemigrations locations
-    ./manage.py makemigrations search
-    ./manage.py makemigrations users
+    ./manage.py makemigrations
 
 Python Django Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -322,9 +302,9 @@ Python Django Installation
 
     cd ~
     sudo rm -r ./cov19.virusmodels.org
-    git clone git@github-cov19virusmodels:lpm0073/cov19.virusmodels.org.git
+    git clone https://github.com/lpm0073/cov19.virusmodels.org.git
 
-    python3 -m venv ~/cov19.virusmodels.org/venv
+    python3.7 -m venv ~/cov19.virusmodels.org/venv
     source ~/cov19.virusmodels.org/venv/bin/activate
     pip install -r ~/cov19.virusmodels.org/cov19/requirements/production.txt
 
@@ -366,7 +346,7 @@ Point .env file to production
 ::
 
     vim /home/ubuntu/cov19.virusmodels.org/.env
-    DJANGO_SETTINGS_MODULE=cov19.settings.production
+    DJANGO_SETTINGS_MODULE = 'cov19.settings.production'
     DJANGO_SECRET_KEY = 'A STRONG KEY THAT IS USED BY DJANGO.'
 
 Point cov19/wsgi.py to production
@@ -376,7 +356,7 @@ Point cov19/wsgi.py to production
     vim /home/ubuntu/cov19.virusmodels.org/cov19/wsgi.py
     DELETE THIS ---> os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cov19.settings.production")
 
-Add a cov19.virusmodels.org/cov19/settings/passwords.py file with values
+Add a cov19.virusmodels.org/cov19/settings/secrets.py file with values
 for
 
 ::

@@ -1,4 +1,5 @@
 """isort:skip_file"""
+import secrets
 from .base import *  # noqa
 from .base import env
 
@@ -11,7 +12,19 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["cov19.virusmodels.org
 
 # DATABASES
 # ------------------------------------------------------------------------------
-DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'OPTIONS': {
+                'sql_mode': 'traditional',
+            },
+            'NAME': 'cov19',
+            'USER': 'cov19',
+            'PASSWORD': secrets.DATABASES_PASSWORD,
+            'HOST': 'wordpress-sql.cp6gb73qx6d7.us-west-2.rds.amazonaws.com',
+            'PORT': '3306',
+        }
+    }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
 
