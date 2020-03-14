@@ -1,5 +1,5 @@
 """isort:skip_file"""
-import secrets
+from .secrets import *
 from .base import *  # noqa
 from .base import env
 
@@ -20,7 +20,7 @@ DATABASES = {
             },
             'NAME': 'cov19',
             'USER': 'cov19',
-            'PASSWORD': secrets.DATABASES_PASSWORD,
+            'PASSWORD': DATABASE_PASSWORD,
             'HOST': 'wordpress-sql.cp6gb73qx6d7.us-west-2.rds.amazonaws.com',
             'PORT': '3306',
         }
@@ -30,16 +30,24 @@ DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # no
 
 # CACHES
 # ------------------------------------------------------------------------------
+#CACHES = {
+#    "default": {
+#        "BACKEND": "django_redis.cache.RedisCache",
+#        "LOCATION": env("REDIS_URL"),
+#        "OPTIONS": {
+#            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#            # Mimicing memcache behavior.
+#            # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
+#            "IGNORE_EXCEPTIONS": True,
+#        },
+#    }
+#}
+
+# lawrence: overrides production defaults from cookiecutter
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": env("REDIS_URL"),
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # Mimicing memcache behavior.
-            # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
-            "IGNORE_EXCEPTIONS": True,
-        },
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "",
     }
 }
 

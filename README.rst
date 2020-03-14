@@ -354,7 +354,7 @@ Add a ~/cov19.virusmodels.org/.env file
 ::
 
     vim ~/cov19.virusmodels.org/.env
-    DJANGO_SETTINGS_MODULE = cov19.config.settings.production
+    DJANGO_SETTINGS_MODULE = config.settings.production
     DJANGO_SECRET_KEY = 'A STRONG KEY THAT IS USED BY DJANGO.'
 
 
@@ -364,7 +364,11 @@ for
 ::
 
 
-    DATABASES_PASSWORD = 'YOUR TOP-SECRET PASSWORD'
+    DATABASE_PASSWORD = 'YOUR TOP-SECRET PASSWORD'
+    DJANGO_AWS_ACCESS_KEY_ID = 'YOUR TOP-SECRET PASSWORD'
+    DJANGO_AWS_SECRET_ACCESS_KEY = 'YOUR TOP-SECRET PASSWORD'
+    DJANGO_AWS_STORAGE_BUCKET_NAME = 'cov19.virusmodels.org'
+
 
 Initiate the Django build sequence to initialize the database, load
 Wagtail sample data, compile static assets and finally, test the build

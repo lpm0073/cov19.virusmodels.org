@@ -6,6 +6,7 @@ import sys
 import dotenv
 
 if __name__ == "__main__":
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
     # mcdaniel:
     # this allows us to seamlessly toggle between local (ie "dev") and production settings.
     # .env contains the DJANGO_SETTINGS_MODULE value:
@@ -14,7 +15,6 @@ if __name__ == "__main__":
     # reference: https://github.com/jpadilla/django-dotenv
     # this needs to be placed immediately above os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
     dotenv.read_dotenv(override=True)
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
 
     try:
         from django.core.management import execute_from_command_line
