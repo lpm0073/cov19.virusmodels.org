@@ -60,7 +60,7 @@ start the dev web server to ensure that the site comes up:
 
 .. code:: bash
 
-    $ $ createdb cov19 -U postgres --password cov19
+    $ createdb cov19 -U postgres --password cov19
 
 4. Set environment variable
 
@@ -73,9 +73,8 @@ start the dev web server to ensure that the site comes up:
 
 .. code:: bash
 
-    $ cov19/manage.py createsuperuser
     $ cov19/manage.py migrate
-    $ cov19/manage.py load_initial_data
+    $ cov19/manage.py createsuperuser
     $ cov19/manage.py runserver
 
 

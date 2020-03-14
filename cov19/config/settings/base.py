@@ -12,6 +12,11 @@ APPS_DIR = ROOT_DIR.path("cov19")
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+
+print('READ_DOT_ENV_FILE: {READ_DOT_ENV_FILE}'.format(
+    READ_DOT_ENV_FILE=READ_DOT_ENV_FILE
+))
+
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(ROOT_DIR.path(".env")))
@@ -43,7 +48,14 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///cov19")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cov19',
+        'USER': 'provisioner',
+        'PASSWORD': 'provisioner',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -72,8 +84,8 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "rest_framework",
-    "django_celery_beat",
+    "rest_framework"
+    #"django_celery_beat",
 ]
 
 LOCAL_APPS = [
@@ -261,7 +273,8 @@ if USE_TZ:
     # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
     CELERY_TIMEZONE = TIME_ZONE
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_url
-CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+#CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+CELERY_BROKER_URL="redis://localhost:6379/0"
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
@@ -278,6 +291,8 @@ CELERY_TASK_TIME_LIMIT = 5 * 60
 CELERY_TASK_SOFT_TIME_LIMIT = 60
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-scheduler
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
+
 # django-allauth
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
