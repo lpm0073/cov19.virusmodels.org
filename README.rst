@@ -275,7 +275,7 @@ MySql Installation
     $ mysql -u root -h wordpress-sql.cp6gb73qx6d7.us-west-2.rds.amazonaws.com -p
     mysql> CREATE DATABASE cov19 CHARACTER SET 'utf8';
     mysql> CREATE USER cov19;
-    mysql> GRANT ALL ON cov19.* TO 'cov19'@'%' IDENTIFIED BY 'cov19';
+    mysql> GRANT ALL ON cov19.* TO 'cov19'@'%' IDENTIFIED BY 'YOUR-STRONG-PASSWORD';
     mysql> FLUSH PRIVILEGES;
     mysql> quit
 
@@ -329,7 +329,7 @@ in the MySql installation above:
              },
              'NAME': 'cov19',
              'USER': 'cov19',
-             'PASSWORD': 'cov19',
+             'PASSWORD': 'YOUR-STRONG-PASSWORD',
              'HOST': 'localhost',
              'PORT': '3306',
          }
@@ -364,9 +364,9 @@ for
 ::
 
 
-    DATABASE_PASSWORD = 'YOUR TOP-SECRET PASSWORD'
-    DJANGO_AWS_ACCESS_KEY_ID = 'YOUR TOP-SECRET PASSWORD'
-    DJANGO_AWS_SECRET_ACCESS_KEY = 'YOUR TOP-SECRET PASSWORD'
+    DATABASE_PASSWORD = 'YOUR-STRONG-PASSWORD'
+    DJANGO_AWS_ACCESS_KEY_ID = 'YOUR-STRONG-PASSWORD'
+    DJANGO_AWS_SECRET_ACCESS_KEY = 'YOUR-STRONG-PASSWORD'
     DJANGO_AWS_STORAGE_BUCKET_NAME = 'cov19.virusmodels.org'
 
 
@@ -393,8 +393,7 @@ Test to see if gunicorn starts correctly:
 
     $ cd ~/cov19.virusmodels.org
     $ source ~/cov19.virusmodels.org/venv/bin/activate
-    (env) $ cd ~/cov19.virusmodels.org/
-    (env) $ gunicorn --bind 0.0.0.0:8000 cov19.wsgi:application
+    (env) $ gunicorn --bind 0.0.0.0:8000 cov19.config.wsgi:application
     (env) $ deactivate
 
 Link gunicorn configuration socket and service files:

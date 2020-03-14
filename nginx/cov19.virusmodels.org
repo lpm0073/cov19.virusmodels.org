@@ -1,0 +1,23 @@
+server {
+
+server_name cov19.virusmodels.org; charset utf-8;
+
+client_max_body_size 75M; # adjust to taste
+
+location = /favicon.ico { access_log off; log_not_found off; }
+
+location /media { alias /home/ubuntu/cov19.virusmodels.org/djangoproject/media; }
+
+location /static { alias /home/ubuntu/cov19.virusmodels.org/djangoproject/staticfiles; }
+
+location / { include proxy_params; #proxy_pass http://unix:/run/gunicorn.sock; #
+
+proxy_pass http://unix:/home/ubuntu/cov19.virusmodels.org/etc/systemd/system/gunicorn.sock; }
+
+listen 443 ssl; # managed by Certbot ssl_certificate /etc/letsencrypt/live/cov19.virusmodels.org/fullchain.pem; # managed by Certbot ssl_certificate_key /etc/letsencrypt/live/cov19.virusmodels.org/privkey.pem; # managed by Certbot include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server { if ($host = cov19.virusmodels.org) { return 301 https://$host$request_uri; } # managed by Certbot
+
+listen 80; server_name cov19.virusmodels.org; return 404; # managed by Certbot }
