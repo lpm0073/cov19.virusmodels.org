@@ -11,11 +11,8 @@ APPS_DIR = ROOT_DIR.path("cov19")
 
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
-
-print('READ_DOT_ENV_FILE: {READ_DOT_ENV_FILE}'.format(
-    READ_DOT_ENV_FILE=READ_DOT_ENV_FILE
-))
+# lawrence: hard-coding to True. we're using this for both dev and production.
+READ_DOT_ENV_FILE = True
 
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
