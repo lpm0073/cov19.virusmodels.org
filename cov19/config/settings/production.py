@@ -174,6 +174,7 @@ ANYMAIL = {
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
+LOG_PATH = '/var/log/cov19.virusmodels.org/'
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -195,19 +196,41 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
+        'file-app': {
+            'level': 'INFO',
+            'formatter': 'verbose',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOG_PATH + 'app.log',
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            },
+        'file-err': {
+            'level': 'ERROR',
+            'formatter': 'verbose',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOG_PATH + 'error.log',
+            "formatter": "verbose",
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+        },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
         "django.request": {
-            "handlers": ["mail_admins"],
+            "handlers": ["file-err", "console", "mail_admins"],
             "level": "ERROR",
             "propagate": True,
         },
         "django.security.DisallowedHost": {
             "level": "ERROR",
-            "handlers": ["console", "mail_admins"],
+            "handlers": ["file-err", "console", "mail_admins"],
             "propagate": True,
         },
+        "cov19": {
+            "handlers": ["file-app"],
+            "level": "INFO",
+            "propagate": True,
+            },
     },
 }
 
