@@ -379,10 +379,11 @@ from the web server launch then the built might have been successful.
 
     $ cd ~/cov19.virusmodels.org
     $ source ~/cov19.virusmodels.org/venv/bin/activate
-    (env) $ python cov19/manage.py makemigrations
-    (env) $ python cov19/manage.py migrate
-    (env) $ python cov19/manage.py collectstatic
-    (env) $ python cov19/manage.py runserver
+    (env) $ cd cov19
+    (env) $ python ./manage.py makemigrations
+    (env) $ python ./manage.py migrate
+    (env) $ python ./manage.py collectstatic
+    (env) $ python ./manage.py runserver
 
 Gunicorn Configuration
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -393,7 +394,8 @@ Test to see if gunicorn starts correctly:
 
     $ cd ~/cov19.virusmodels.org
     $ source ~/cov19.virusmodels.org/venv/bin/activate
-    (env) $ gunicorn --bind 0.0.0.0:8000 cov19.config.wsgi:application
+    $ cd cov19
+    (env) $ gunicorn --bind 0.0.0.0:8000 config.wsgi:application
     (env) $ deactivate
 
 Link gunicorn configuration socket and service files:
