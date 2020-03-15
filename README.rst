@@ -330,7 +330,7 @@ in the MySql installation above:
              'NAME': 'cov19',
              'USER': 'cov19',
              'PASSWORD': 'YOUR-STRONG-PASSWORD',
-             'HOST': 'localhost',
+             'HOST': 'wordpress-sql.cp6gb73qx6d7.us-west-2.rds.amazonaws.com',
              'PORT': '3306',
          }
      }
