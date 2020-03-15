@@ -442,6 +442,20 @@ Nginx Installation & configuration
     $ sudo nginx -t
     $ sudo systemctl restart nginx
 
+letsencrypt Setup
+^^^^^^^^^^^^^^^^^
+
+::
+
+    sudo apt-get update
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository universe
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt-get update
+    sudo apt-get install certbot python-certbot-nginx 
+
+    sudo certbot --authenticator standalone --installer nginx --pre-hook "service nginx stop" --post-hook "service nginx start"
+
 
 User Guide
 ----------
