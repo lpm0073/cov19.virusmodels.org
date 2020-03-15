@@ -2,6 +2,7 @@
 Base settings to build other settings files upon.
 """
 
+from .secrets import AWS_SES_EMAIL_HOST_PASSWORD
 import environ
 
 ROOT_DIR = (
@@ -227,9 +228,18 @@ X_FRAME_OPTIONS = "DENY"
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
-)
+#
+# lawrence: SMTP setup
+# https://us-west-2.console.aws.amazon.com/ses/home?region=us-west-2#smtp-settings:
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "email-smtp.us-west-2.amazonaws.com"
+EMAIL_HOST_PASSWORD = AWS_SES_EMAIL_HOST_PASSWORD
+EMAIL_HOST_USER = "AKIARKEXDU3EZPU7TMZ6"
+EMAIL_PORT = "587"
+EMAIL_SUBJECT_PREFIX = ""
+EMAIL_USE_TLS = True
+
+
 # https://docs.djangoproject.com/en/2.2/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
