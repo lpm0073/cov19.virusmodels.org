@@ -10,7 +10,7 @@ WorkingDirectory=/home/ubuntu/cov19.virusmodels.org/cov19/
 ExecStart=/home/ubuntu/cov19.virusmodels.org/venv/bin/gunicorn \
          --access-logfile - \
          --workers 3 \
-         --bind unix:/run/gunicorn.sock config.wsgi:application
+         --bind unix:/run/gunicorn.socket config.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
