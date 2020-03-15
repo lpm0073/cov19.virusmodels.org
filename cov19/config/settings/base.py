@@ -238,6 +238,8 @@ EMAIL_HOST_USER = "AKIARKEXDU3EZPU7TMZ6"
 EMAIL_PORT = "587"
 EMAIL_SUBJECT_PREFIX = ""
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "support@virusmodels.org"
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#email-timeout
