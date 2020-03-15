@@ -259,10 +259,16 @@ Ubuntu configuration
 ^^^^^^^^^^^^^^^^^^^^
 
 ::
-
+    # install system dependencies
+    # ---------------------------
     sudo apt-get update
     sudo apt-get install nginx mysql-server python3-pip python3-dev libmysqlclient-dev ufw python3-venv curl libpq-dev
 
+    # create the application log path
+    # ---------------------------
+    sudo mkdir /var/log/cov19.virusmodels.org/
+    sudo chown ubuntu /var/log/cov19.virusmodels.org/
+    sudo chgrp www-data /var/log/cov19.virusmodels.org/
 
 MySql Installation
 ^^^^^^^^^^^^^^^^^^
