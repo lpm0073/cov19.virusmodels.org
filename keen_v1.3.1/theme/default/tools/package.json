@@ -41,7 +41,7 @@
         "es6-promise-polyfill": "^1.2.0",
         "fullcalendar": "^3.7.0",
         "gmaps": "^0.4.24",
-        "handlebars": "4.0.10",
+        "handlebars": "4.5.3",
         "inputmask": "^3.3.11",
         "ion-rangeslider": "^2.2.0",
         "jquery": "^3.3.1",
